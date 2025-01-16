@@ -1,10 +1,10 @@
 import './App.css';
-import { WorkOfArts } from './pages/work-of-arts/WorkOfArts';
+import { WorkOfArtsPage } from './pages/work-of-arts/WorkOfArtsPage';
 
 function App() {
     return (
         <div className='App'>
-			<WorkOfArts />
+			<WorkOfArtsPage />
         </div>
     );
 }
