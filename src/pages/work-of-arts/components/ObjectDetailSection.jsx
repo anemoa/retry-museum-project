@@ -6,28 +6,36 @@ const ObjDetailSection = styled.section`
     background-color: #f9f9f9;
 `;
 
+const ObjInfoBox = styled.div`
+    width: 50%;
+    padding-right: 2rem;
+`;
+
 export const ObjectDetailSection = () => {
+    const artsDetail = [
+        {
+            title: 'Measurements',
+            content: `작품 크기 자리`,
+        },
+        {
+            title: 'Place',
+            content: `우선 만든 나라 자리`,
+        },
+        {
+            title: 'Description',
+            content: `우선 설명 자리`,
+        },
+    ];
     return (
         <ObjDetailSection>
-            <div className='arts_pic_wrap'>
-                <div className='art_pic_box'>
-                    <img src='' alt='' />
-                </div>
-
-                <div className='art_simple_info'>
-                    <h2 className='art_title'>ㅇㅇㅇ</h2>
-
-                    <div className='art_info_box'>
-                        <strong className='info_title'>Maker</strong>
-                        <p className='info_value'>ㄴㄴㄴ</p>
+            <ObjInfoBox>
+                {artsDetail.map((art, idx) => (
+                    <div key={idx} className='sub_info_box'>
+                        <strong className='sub_info_title'>{art.title}</strong>
+                        <p className='sub_info_value'>{art.content}</p>
                     </div>
-
-                    <div className='art_info_box'>
-                        <strong className='info_title'>Production date</strong>
-                        <p className='info_value'>ㅇㅇㄴㄴ</p>
-                    </div>
-                </div>
-            </div>
+                ))}
+            </ObjInfoBox>
         </ObjDetailSection>
     );
 };
