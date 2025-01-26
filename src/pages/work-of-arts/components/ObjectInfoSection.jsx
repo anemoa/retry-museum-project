@@ -6,7 +6,8 @@ const ObjInfoSection = styled.section``;
 export const ObjectInfoSection = () => {
   return (
 	<section>
-		ObjectInfoSection
+		<div>img box</div>
+		<div>art info box</div>
 	</section>
   )
 }
