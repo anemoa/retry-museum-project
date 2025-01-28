@@ -9,9 +9,47 @@ const ObjDetailSection = styled.section`
 const ObjInfoBox = styled.div`
     width: 50%;
     padding-right: 2rem;
+	text-align: left;
 `;
 
 export const ObjectDetailSection = () => {
+
+	const artSubInfo = [
+		{
+			title: 'Artist', 
+			content: {
+				type: 'link',
+				to: '/period',
+				text: `작가이름`,
+			}
+		},
+		{
+			title: 'My shortlist', 
+			content: {
+				type: 'text',
+				text: 'Add Favorite List',
+			}
+		},
+		{
+			title: 'Object type', 
+			content: {
+				type: 'text',
+				text: `소재가 무엇인지`,
+			}
+		},
+		{
+			title: 'Share',
+			content: {
+				type: 'links',
+				items: [
+					{url: 'https://www.naver.com', name: 'naver'},
+					{url: 'https://www.google.com', name: 'google'},
+					{url: 'https://www.insta.com', name: 'insta'},
+				]
+			}
+		}
+	];
+
     const artsDetail = [
         {
             title: 'Measurements',
@@ -36,6 +74,18 @@ export const ObjectDetailSection = () => {
                     </div>
                 ))}
             </ObjInfoBox>
+
+			<div>
+				{
+					artSubInfo.map((ele, idx) => {
+						return (
+							<div>
+								
+							</div>
+						)
+					} )
+				}
+			</div>
         </ObjDetailSection>
     );
 };
