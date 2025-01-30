@@ -9,46 +9,67 @@ const ObjDetailSection = styled.section`
 const ObjInfoBox = styled.div`
     width: 50%;
     padding-right: 2rem;
-	text-align: left;
+    text-align: left;
 `;
 
-export const ObjectDetailSection = () => {
+const ContentRender = ({ content }) => {
+    switch (content.type) {
+        case 'link':
+            // return <Link to={`/artists/${content.text}`}>{content.text}</Link>
+            return <a href=''>{content.text}</a>;
+        case 'text':
+            return <p>{content.text}</p>;
+        case 'links':
+            return (
+                <ul>
+                    {content.items.map((link, i) => (
+                        <li key={i}>
+                            <a href={link.url}>{link.name}</a>
+                        </li>
+                    ))}
+                </ul>
+            );
+		default:
+			return null;
+    }
+};
 
-	const artSubInfo = [
-		{
-			title: 'Artist', 
-			content: {
-				type: 'link',
-				to: '/period',
-				text: `작가이름`,
-			}
-		},
-		{
-			title: 'My shortlist', 
-			content: {
-				type: 'text',
-				text: 'Add Favorite List',
-			}
-		},
-		{
-			title: 'Object type', 
-			content: {
-				type: 'text',
-				text: `소재가 무엇인지`,
-			}
-		},
-		{
-			title: 'Share',
-			content: {
-				type: 'links',
-				items: [
-					{url: 'https://www.naver.com', name: 'naver'},
-					{url: 'https://www.google.com', name: 'google'},
-					{url: 'https://www.insta.com', name: 'insta'},
-				]
-			}
-		}
-	];
+export const ObjectDetailSection = () => {
+    const artSubInfo = [
+        {
+            title: 'Artist',
+            content: {
+                type: 'link',
+                to: '/period',
+                text: `작가이름`,
+            },
+        },
+        {
+            title: 'My shortlist',
+            content: {
+                type: 'text',
+                text: 'Add Favorite List',
+            },
+        },
+        {
+            title: 'Object type',
+            content: {
+                type: 'text',
+                text: `소재가 무엇인지`,
+            },
+        },
+        {
+            title: 'Share',
+            content: {
+                type: 'links',
+                items: [
+                    { url: 'https://www.naver.com', name: 'naver' },
+                    { url: 'https://www.google.com', name: 'google' },
+                    { url: 'https://www.insta.com', name: 'insta' },
+                ],
+            },
+        },
+    ];
 
     const artsDetail = [
         {
@@ -75,17 +96,16 @@ export const ObjectDetailSection = () => {
                 ))}
             </ObjInfoBox>
 
-			<div>
-				{
-					artSubInfo.map((ele, idx) => {
-						return (
-							<div>
-								
-							</div>
-						)
-					} )
-				}
-			</div>
+            <div>
+                {artSubInfo.map((ele, idx) => {
+                    return (
+                        <div>
+                            <p>{ele.title}</p>
+							<ContentRender content={ele.content}/>
+                        </div>
+                    );
+                })}
+            </div>
         </ObjDetailSection>
     );
 };
