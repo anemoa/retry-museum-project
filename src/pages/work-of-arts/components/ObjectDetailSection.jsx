@@ -12,6 +12,12 @@ const ObjInfoBox = styled.div`
     text-align: left;
 `;
 
+const ObjSubInfoBox = styled.div`
+    width: 50%;
+    padding: 0 2rem;
+    border-left: 1px solid #e8e8e8;
+`;
+
 const ContentRender = ({ content }) => {
     switch (content.type) {
         case 'link':
@@ -29,8 +35,8 @@ const ContentRender = ({ content }) => {
                     ))}
                 </ul>
             );
-		default:
-			return null;
+        default:
+            return null;
     }
 };
 
@@ -96,16 +102,16 @@ export const ObjectDetailSection = () => {
                 ))}
             </ObjInfoBox>
 
-            <div>
+            <ObjSubInfoBox>
                 {artSubInfo.map((ele, idx) => {
                     return (
                         <div>
                             <p>{ele.title}</p>
-							<ContentRender content={ele.content}/>
+                            <ContentRender content={ele.content} />
                         </div>
                     );
                 })}
-            </div>
+            </ObjSubInfoBox>
         </ObjDetailSection>
     );
 };
