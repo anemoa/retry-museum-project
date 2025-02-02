@@ -25,6 +25,24 @@ const WorkOfArtsStore = create((set) => ({
 
 		try{
 			const response = await axios.get(`${API_BASE_URL}collection/${objId}?key=${api_key}`);
+			const artData = response.data.artObject;
+			const artDetailData = response.data.artObject.principalMakers[0];
+
+			set({
+				artDatas: {
+					material: artData.materials[0],
+					artistName: artData.principalMaker,
+					artTitle: artData.title,
+					productDate: artData.dating.yearLate,
+					measuer: artData.subTitle,
+					description: artData.description,
+					place: artData.classification.places[0],
+					image: artData.webImage.url,
+					birthDate: artDetailData.dateOfBirth,
+					deathDate: artDetailData.dateOfDeath
+				},
+				loading: false,
+			})
 
 		} catch (error){
 			set({
